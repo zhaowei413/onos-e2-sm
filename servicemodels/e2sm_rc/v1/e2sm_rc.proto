@@ -1692,3 +1692,251 @@ message PolicyConditionRanparameterItem {
     // @inject_tag: aper:"optional,valueExt,fromValueExt"
     optional RanparameterDefinition ran_parameter_definition = 3 [ json_name="ranParameter-Definition"];
 };
+
+message MessageClassExtension {
+    // @inject_tag: aper:"valueLB:1,valueUB:4294967296,valueExt"
+    int64 value = 1 [(validate.v1.rules).int64 = {gte: 1, lte: 4294967296}, json_name="value"];
+};
+
+message RRCReconfigurationComplete {
+    // @inject_tag: aper:"valueLB:1,valueUB:4294967296,valueExt"
+    int64 value = 1 [(validate.v1.rules).int64 = {gte: 1, lte: 4294967296}, json_name="value"];
+};
+
+message RRCSetupComplete {
+    // @inject_tag: aper:"valueLB:1,valueUB:4294967296,valueExt"
+    int64 value = 1 [(validate.v1.rules).int64 = {gte: 1, lte: 4294967296}, json_name="value"];
+};
+
+message RRCReestablishmentComplete {
+    // @inject_tag: aper:"valueLB:1,valueUB:4294967296,valueExt"
+    int64 value = 1 [(validate.v1.rules).int64 = {gte: 1, lte: 4294967296}, json_name="value"];
+};
+
+message RRCResumeComplete {
+    // @inject_tag: aper:"valueLB:1,valueUB:4294967296,valueExt"
+    int64 value = 1 [(validate.v1.rules).int64 = {gte: 1, lte: 4294967296}, json_name="value"];
+};
+
+message SecurityModeComplete {
+    // @inject_tag: aper:"valueLB:1,valueUB:4294967296,valueExt"
+    int64 value = 1 [(validate.v1.rules).int64 = {gte: 1, lte: 4294967296}, json_name="value"];
+};
+
+message SecurityModeFailure {
+    // @inject_tag: aper:"valueLB:1,valueUB:4294967296,valueExt"
+    int64 value = 1 [(validate.v1.rules).int64 = {gte: 1, lte: 4294967296}, json_name="value"];
+};
+
+message ULInformationTransfer {
+    // @inject_tag: aper:"valueLB:1,valueUB:4294967296,valueExt"
+    int64 value = 1 [(validate.v1.rules).int64 = {gte: 1, lte: 4294967296}, json_name="value"];
+};
+
+message LocationMeasurementIndication {
+    // @inject_tag: aper:"valueLB:1,valueUB:4294967296,valueExt"
+    int64 value = 1 [(validate.v1.rules).int64 = {gte: 1, lte: 4294967296}, json_name="value"];
+};
+
+message CounterCheckResponse {
+    // @inject_tag: aper:"valueLB:1,valueUB:4294967296,valueExt"
+    int64 value = 1 [(validate.v1.rules).int64 = {gte: 1, lte: 4294967296}, json_name="value"];
+};
+
+message UEAssistanceInformation {
+    // @inject_tag: aper:"valueLB:1,valueUB:4294967296,valueExt"
+    int64 value = 1 [(validate.v1.rules).int64 = {gte: 1, lte: 4294967296}, json_name="value"];
+};
+
+message FailureInformation {
+    // @inject_tag: aper:"valueLB:1,valueUB:4294967296,valueExt"
+    int64 value = 1 [(validate.v1.rules).int64 = {gte: 1, lte: 4294967296}, json_name="value"];
+};
+
+message ULInformationTransferMRDC {
+    // @inject_tag: aper:"valueLB:1,valueUB:4294967296,valueExt"
+    int64 value = 1 [(validate.v1.rules).int64 = {gte: 1, lte: 4294967296}, json_name="value"];
+};
+
+message SCGFailureInformation {
+    // @inject_tag: aper:"valueLB:1,valueUB:4294967296,valueExt"
+    int64 value = 1 [(validate.v1.rules).int64 = {gte: 1, lte: 4294967296}, json_name="value"];
+};
+
+message SCGFailureInformationEUTRA {
+    // @inject_tag: aper:"valueLB:1,valueUB:4294967296,valueExt"
+    int64 value = 1 [(validate.v1.rules).int64 = {gte: 1, lte: 4294967296}, json_name="value"];
+};
+
+message UECapabilityInformation {
+    // @inject_tag: aper:"valueLB:1,valueUB:4294967296,valueExt"
+    int64 value = 1 [(validate.v1.rules).int64 = {gte: 1, lte: 4294967296}, json_name="value"];
+};
+
+message CriticalExtensionsFuture {
+    // @inject_tag: aper:"valueLB:1,valueUB:4294967296,valueExt"
+    int64 value = 1 [(validate.v1.rules).int64 = {gte: 1, lte: 4294967296}, json_name="value"];
+};
+
+message NonCriticalExtension {
+    // @inject_tag: aper:"valueLB:1,valueUB:4294967296,valueExt"
+    int64 value = 1 [(validate.v1.rules).int64 = {gte: 1, lte: 4294967296}, json_name="value"];
+};
+
+message LateNonCriticalExtension {
+    bytes value = 1 [json_name="value"];
+};
+
+message ServCellIndex {
+    // @inject_tag: aper:"valueLB:0,valueUB:31,valueExt"
+    int64 value = 1 [(validate.v1.rules).int64 = {gte: 0, lte: 31}, json_name="value"];
+};
+
+message PhysCellId {
+    // @inject_tag: aper:"valueLB:0,valueUB:1007,valueExt"
+    int64 value = 1 [(validate.v1.rules).int64 = {gte: 0, lte: 1007}, json_name="value"];
+};
+
+message RSRP_Range {
+    // @inject_tag: aper:"valueLB:0,valueUB:127,valueExt"
+    int64 value = 1 [(validate.v1.rules).int64 = {gte: 0, lte: 127}, json_name="value"];
+};
+
+message RSRQ_Range {
+    // @inject_tag: aper:"valueLB:0,valueUB:127,valueExt"
+    int64 value = 1 [(validate.v1.rules).int64 = {gte: 0, lte: 127}, json_name="value"];
+};
+
+message SINR_Range {
+    // @inject_tag: aper:"valueLB:0,valueUB:127,valueExt"
+    int64 value = 1 [(validate.v1.rules).int64 = {gte: 0, lte: 127}, json_name="value"];
+};
+
+message MeasQuantityResults {
+    optional RSRP_Range rsrp = 1 [ json_name="rsrp"];
+    optional RSRQ_Range rsrq = 2 [ json_name="rsrq"];
+    optional SINR_Range sinr = 3 [ json_name="sinr"];
+};
+
+message CellResults {
+    optional MeasQuantityResults resultsSSB_Cell = 1 [ json_name="resultsSSB_Cell"];
+    optional MeasQuantityResults resultsCSI_RS_Cell = 2 [ json_name="resultsCSI_RS_Cell"];
+};
+
+message RsIndexResults {
+    // @inject_tag: aper:"valueLB:1,valueUB:4294967296,valueExt"
+    int64 value = 1 [(validate.v1.rules).int64 = {gte: 1, lte: 4294967296}, json_name="value"];
+};
+
+message MeasResult {
+    CellResults cellResults = 1 [ json_name="cellResults"];
+    optional RsIndexResults rsIndexResults = 2 [ json_name="rsIndexResults"];
+};
+
+message MeasResultNR {
+    optional PhysCellId physCellId = 1 [ json_name="physCellId"];
+    MeasResult measResult = 2 [ json_name="measResult"];
+};
+
+message MeasResultServMO {
+    ServCellIndex servCellId = 1 [ json_name="servCellId"];
+    MeasResultNR measResultServingCell = 2 [ json_name="measResultServingCell"];
+    optional MeasResultNR measResultBestNeighCell = 3 [ json_name="measResultBestNeighCell"];
+};
+
+message MeasResultServMOList {
+    // @inject_tag: aper:"valueExt,sizeLB:1,sizeUB:32"
+    repeated MeasResultServMO value = 1 [json_name = "value"];
+};
+
+message MeasId {
+    // @inject_tag: aper:"valueLB:1,valueUB:64,valueExt"
+    int64 value = 1 [(validate.v1.rules).int64 = {gte: 1, lte: 64}, json_name="value"];
+};
+
+message MeasResultListEUTRA {
+    // @inject_tag: aper:"valueLB:0,valueUB:127,valueExt"
+    int64 value = 1 [(validate.v1.rules).int64 = {gte: 0, lte: 127}, json_name="value"];
+};
+
+message MeasResultListUTRA_FDD_r16 {
+    // @inject_tag: aper:"valueLB:0,valueUB:127,valueExt"
+    int64 value = 1 [(validate.v1.rules).int64 = {gte: 0, lte: 127}, json_name="value"];
+};
+
+message Sl_MeasResultsCandRelay_r17 {
+    // @inject_tag: aper:"valueLB:0,valueUB:127,valueExt"
+    int64 value = 1 [(validate.v1.rules).int64 = {gte: 0, lte: 127}, json_name="value"];
+};
+
+message MeasResultListNR {
+    // @inject_tag: aper:"valueExt,sizeLB:1,sizeUB:8"
+    repeated MeasResultNR value = 1 [json_name = "value"];
+};
+
+message MeasResultNeighCells {
+    oneof measResultNeighCells_item {
+        MeasResultListNR measResultListNR = 1 [ json_name="measResultListNR" ];
+        MeasResultListEUTRA measResultListEUTRA = 2 [ json_name="measResultListEUTRA"];
+        MeasResultListUTRA_FDD_r16 measResultListUTRA_FDD_r16 = 3 [ json_name="measResultListUTRA_FDD_r16"];
+        Sl_MeasResultsCandRelay_r17 sl_MeasResultsCandRelay_r17 = 4 [ json_name="sl_MeasResultsCandRelay_r17"];
+    }
+};
+
+message MeasResults {
+    MeasId measId = 1 [ json_name="measId"];
+    MeasResultServMOList measResultServingMOList = 2 [ json_name="measResultServingMOList"];
+    optional MeasResultNeighCells measResultNeighCells = 3 [ json_name="measResultNeighCells"];
+};
+
+message MeasurementReport_item {
+    MeasResults measResults = 1 [ json_name="measResults"];
+    optional LateNonCriticalExtension lateNonCriticalExtension = 2 [ json_name="lateNonCriticalExtension"];
+    optional NonCriticalExtension nonCriticalExtension = 3 [ json_name="nonCriticalExtension"];
+};
+
+message MeasurementReport {
+     oneof criticalExtensions_item {
+        MeasurementReport_item measurementReport = 1 [ json_name="measurementReport"];
+        CriticalExtensionsFuture criticalExtensionsFuture = 2 [ json_name="criticalExtensionsFuture"];
+     }
+};
+
+// range of Integer from e2sm_rc.asn1:200
+// {C1}
+message C1 {
+    oneof c1_item {
+        MeasurementReport measurementReport = 1 [ json_name="measurementReport"];
+        RRCReconfigurationComplete rrcReconfigurationComplete = 2 [ json_name="rrcReconfigurationComplete"];
+        RRCSetupComplete rrcSetupComplete = 3 [ json_name="rrcSetupComplete"];
+        RRCReestablishmentComplete rrcReestablishmentComplete = 4 [ json_name="rrcReestablishmentComplete"];
+        RRCResumeComplete rrcResumeComplete = 5 [ json_name="rrcResumeComplete"];
+        SecurityModeComplete securityModeComplete = 6 [ json_name="securityModeComplete"];
+        SecurityModeFailure securityModeFailure = 7 [ json_name="securityModeFailure"];
+        ULInformationTransfer ulInformationTransfer = 8 [ json_name="ulInformationTransfer"];
+        LocationMeasurementIndication locationMeasurementIndication = 9 [ json_name="locationMeasurementIndication"];
+        UECapabilityInformation ueCapabilityInformation = 10 [ json_name="ueCapabilityInformation"];
+        CounterCheckResponse counterCheckResponse = 11 [ json_name="counterCheckResponse"];
+        UEAssistanceInformation ueAssistanceInformation = 12 [ json_name="ueAssistanceInformation"];
+        FailureInformation failureInformation = 13 [ json_name="failureInformation"];
+        ULInformationTransferMRDC ulInformationTransferMRDC = 14 [ json_name="ulInformationTransferMRDC"];
+        SCGFailureInformation scgFailureInformation = 15 [ json_name="scgFailureInformation"];
+        SCGFailureInformationEUTRA scgFailureInformationEUTRA = 16 [ json_name="scgFailureInformationEUTRA"];
+    }
+};
+
+// sequence from e2sm_rc.asn1:1025
+// {ULDCCHMessageTypeItem}
+message ULDCCHMessageTypeItem {
+    oneof uldcch_messagetype_item {
+        C1 c1 = 1 [ json_name="c1"];
+        MessageClassExtension message_class_extension = 2 [ json_name="message_class_extension"];
+    }
+};
+
+// sequence from e2sm_rc.asn1:1025
+// {ULDCCHMessageItem}
+message ULDCCHMessageItem {
+    ULDCCHMessageTypeItem  message = 1 [ json_name="message_class_extension"];
+};
+
