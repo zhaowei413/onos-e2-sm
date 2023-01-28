@@ -1889,10 +1889,40 @@ message MeasResults {
     optional MeasResultNeighCells measResultNeighCells = 3 [ json_name="measResultNeighCells"];
 };
 
-message MeasurementReport_item {
-    MeasResults measResults = 1 [ json_name="measResults"];
-    optional LateNonCriticalExtension lateNonCriticalExtension = 2 [ json_name="lateNonCriticalExtension"];
-    optional NonCriticalExtension nonCriticalExtension = 3 [ json_name="nonCriticalExtension"];
+message MeasResultServFreqListEUTRA_SCG {
+    // @inject_tag: aper:"valueLB:1,valueUB:64,valueExt"
+    int64 value = 1 [(validate.v1.rules).int64 = {gte: 1, lte: 64}, json_name="value"];
+};
+ 
+message MeasResultServFreqListNR_SCG {
+    // @inject_tag: aper:"valueLB:1,valueUB:64,valueExt"
+    int64 value = 1 [(validate.v1.rules).int64 = {gte: 1, lte: 64}, json_name="value"];
+};
+ 
+message MeasResultSFTD_EUTRA {
+    // @inject_tag: aper:"valueLB:1,valueUB:64,valueExt"
+    int64 value = 1 [(validate.v1.rules).int64 = {gte: 1, lte: 64}, json_name="value"];
+};
+ 
+message MeasResultCellSFTD_NR {
+    // @inject_tag: aper:"valueLB:1,valueUB:64,valueExt"
+    int64 value = 1 [(validate.v1.rules).int64 = {gte: 1, lte: 64}, json_name="value"];
+};
+ 
+message MeasResultCellListSFTD_NR {
+    // @inject_tag: aper:"valueLB:1,valueUB:64,valueExt"
+    int64 value = 1 [(validate.v1.rules).int64 = {gte: 1, lte: 64}, json_name="value"];
+};
+ 
+message MeasResults {
+    MeasId measId = 1 [ json_name="measId"];
+    MeasResultServMOList measResultServingMOList = 2 [ json_name="measResultServingMOList"];
+    optional MeasResultNeighCells measResultNeighCells = 3 [ json_name="measResultNeighCells"];
+    optional MeasResultServFreqListEUTRA_SCG measResultServFreqListEUTRA_SCG = 4 [ json_name="measResultServFreqListEUTRA_SCG"];
+    optional MeasResultServFreqListNR_SCG measResultServFreqListNR_SCG = 5 [ json_name="measResultServFreqListNR_SCG"];
+    optional MeasResultSFTD_EUTRA measResultSFTD_EUTRA = 6 [ json_name="measResultSFTD_EUTRA"];
+    optional MeasResultCellSFTD_NR measResultSFTD_NR = 7 [ json_name="measResultSFTD_NR"];
+    optional MeasResultCellListSFTD_NR measResultCellListSFTD_NR = 8 [ json_name="measResultCellListSFTD_NR"];
 };
 
 message MeasurementReport {
