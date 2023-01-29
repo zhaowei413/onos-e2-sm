@@ -1797,30 +1797,30 @@ message PhysCellId {
     int64 value = 1 [(validate.v1.rules).int64 = {gte: 0, lte: 1007}, json_name="value"];
 };
 
-message RSRP_Range {
+message RSRPRange {
     // @inject_tag: aper:"valueLB:0,valueUB:127,valueExt"
     int64 value = 1 [(validate.v1.rules).int64 = {gte: 0, lte: 127}, json_name="value"];
 };
 
-message RSRQ_Range {
+message RSRQRange {
     // @inject_tag: aper:"valueLB:0,valueUB:127,valueExt"
     int64 value = 1 [(validate.v1.rules).int64 = {gte: 0, lte: 127}, json_name="value"];
 };
 
-message SINR_Range {
+message SINRRange {
     // @inject_tag: aper:"valueLB:0,valueUB:127,valueExt"
     int64 value = 1 [(validate.v1.rules).int64 = {gte: 0, lte: 127}, json_name="value"];
 };
 
 message MeasQuantityResults {
-    optional RSRP_Range rsrp = 1 [ json_name="rsrp"];
-    optional RSRQ_Range rsrq = 2 [ json_name="rsrq"];
-    optional SINR_Range sinr = 3 [ json_name="sinr"];
+    optional RSRPRange rsrp = 1 [ json_name="rsrp"];
+    optional RSRQRange rsrq = 2 [ json_name="rsrq"];
+    optional SINRRange sinr = 3 [ json_name="sinr"];
 };
 
 message CellResults {
-    optional MeasQuantityResults resultsSSB_Cell = 1 [ json_name="resultsSSB_Cell"];
-    optional MeasQuantityResults resultsCSI_RS_Cell = 2 [ json_name="resultsCSI_RS_Cell"];
+    optional MeasQuantityResults results_ssb_cell = 1 [ json_name="results_ssb_cell"];
+    optional MeasQuantityResults results_csirs_cell = 2 [ json_name="results_csirs_cell"];
 };
 
 message RsIndexResults {
@@ -1829,19 +1829,19 @@ message RsIndexResults {
 };
 
 message MeasResult {
-    CellResults cellResults = 1 [ json_name="cellResults"];
-    optional RsIndexResults rsIndexResults = 2 [ json_name="rsIndexResults"];
+    CellResults cell_results = 1 [ json_name="cell_results"];
+    optional RsIndexResults rs_index_results = 2 [ json_name="rs_index_results"];
 };
 
 message MeasResultNR {
-    optional PhysCellId physCellId = 1 [ json_name="physCellId"];
-    MeasResult measResult = 2 [ json_name="measResult"];
+    optional PhysCellId phys_cell_id = 1 [ json_name="phys_cell_id"];
+    MeasResult meas_result = 2 [ json_name="meas_result"];
 };
 
 message MeasResultServMO {
-    ServCellIndex servCellId = 1 [ json_name="servCellId"];
-    MeasResultNR measResultServingCell = 2 [ json_name="measResultServingCell"];
-    optional MeasResultNR measResultBestNeighCell = 3 [ json_name="measResultBestNeighCell"];
+    ServCellIndex serv_cell_id = 1 [ json_name="serv_cell_id"];
+    MeasResultNR meas_result_serving_cell = 2 [ json_name="meas_result_serving_cell"];
+    optional MeasResultNR meas_result_best_neigh_cell = 3 [ json_name="meas_result_best_neigh_cell"];
 };
 
 message MeasResultServMOList {
@@ -1859,12 +1859,12 @@ message MeasResultListEUTRA {
     int64 value = 1 [(validate.v1.rules).int64 = {gte: 0, lte: 127}, json_name="value"];
 };
 
-message MeasResultListUTRA_FDD_r16 {
+message MeasResultListUTRAFDDr16 {
     // @inject_tag: aper:"valueLB:0,valueUB:127,valueExt"
     int64 value = 1 [(validate.v1.rules).int64 = {gte: 0, lte: 127}, json_name="value"];
 };
 
-message Sl_MeasResultsCandRelay_r17 {
+message SlMeasResultsCandRelayr17 {
     // @inject_tag: aper:"valueLB:0,valueUB:127,valueExt"
     int64 value = 1 [(validate.v1.rules).int64 = {gte: 0, lte: 127}, json_name="value"];
 };
@@ -1875,60 +1875,60 @@ message MeasResultListNR {
 };
 
 message MeasResultNeighCells {
-    oneof measResultNeighCells_item {
-        MeasResultListNR measResultListNR = 1 [ json_name="measResultListNR" ];
-        MeasResultListEUTRA measResultListEUTRA = 2 [ json_name="measResultListEUTRA"];
-        MeasResultListUTRA_FDD_r16 measResultListUTRA_FDD_r16 = 3 [ json_name="measResultListUTRA_FDD_r16"];
-        Sl_MeasResultsCandRelay_r17 sl_MeasResultsCandRelay_r17 = 4 [ json_name="sl_MeasResultsCandRelay_r17"];
+    oneof meas_result_neigh_cells_item {
+        MeasResultListNR meas_result_list_nr = 1 [ json_name="meas_result_list_nr" ];
+        MeasResultListEUTRA meas_result_list_eutra = 2 [ json_name="meas_result_list_eutra"];
+        MeasResultListUTRAFDDr16 meas_result_list_utra_fdd_r16 = 3 [ json_name="meas_result_list_utra_fdd_r16"];
+        SlMeasResultsCandRelayr17 sl_meas_results_cand_relay_r17 = 4 [ json_name="sl_meas_results_cand_relay_r17"];
     }
 };
 
-message MeasResults {
-    MeasId measId = 1 [ json_name="measId"];
-    MeasResultServMOList measResultServingMOList = 2 [ json_name="measResultServingMOList"];
-    optional MeasResultNeighCells measResultNeighCells = 3 [ json_name="measResultNeighCells"];
+message MeasResultServFreqListEUTRASCG {
+    // @inject_tag: aper:"valueLB:1,valueUB:64,valueExt"
+    int64 value = 1 [(validate.v1.rules).int64 = {gte: 1, lte: 64}, json_name="value"];
+};
+ 
+message MeasResultServFreqListNRSCG {
+    // @inject_tag: aper:"valueLB:1,valueUB:64,valueExt"
+    int64 value = 1 [(validate.v1.rules).int64 = {gte: 1, lte: 64}, json_name="value"];
 };
 
-message MeasResultServFreqListEUTRA_SCG {
+message MeasResultSFTDEUTRA {
     // @inject_tag: aper:"valueLB:1,valueUB:64,valueExt"
     int64 value = 1 [(validate.v1.rules).int64 = {gte: 1, lte: 64}, json_name="value"];
 };
  
-message MeasResultServFreqListNR_SCG {
+message MeasResultCellSFTDNR {
     // @inject_tag: aper:"valueLB:1,valueUB:64,valueExt"
     int64 value = 1 [(validate.v1.rules).int64 = {gte: 1, lte: 64}, json_name="value"];
 };
  
-message MeasResultSFTD_EUTRA {
+message MeasResultCellListSFTDNR {
     // @inject_tag: aper:"valueLB:1,valueUB:64,valueExt"
     int64 value = 1 [(validate.v1.rules).int64 = {gte: 1, lte: 64}, json_name="value"];
 };
- 
-message MeasResultCellSFTD_NR {
-    // @inject_tag: aper:"valueLB:1,valueUB:64,valueExt"
-    int64 value = 1 [(validate.v1.rules).int64 = {gte: 1, lte: 64}, json_name="value"];
-};
- 
-message MeasResultCellListSFTD_NR {
-    // @inject_tag: aper:"valueLB:1,valueUB:64,valueExt"
-    int64 value = 1 [(validate.v1.rules).int64 = {gte: 1, lte: 64}, json_name="value"];
-};
- 
+
 message MeasResults {
-    MeasId measId = 1 [ json_name="measId"];
-    MeasResultServMOList measResultServingMOList = 2 [ json_name="measResultServingMOList"];
-    optional MeasResultNeighCells measResultNeighCells = 3 [ json_name="measResultNeighCells"];
-    optional MeasResultServFreqListEUTRA_SCG measResultServFreqListEUTRA_SCG = 4 [ json_name="measResultServFreqListEUTRA_SCG"];
-    optional MeasResultServFreqListNR_SCG measResultServFreqListNR_SCG = 5 [ json_name="measResultServFreqListNR_SCG"];
-    optional MeasResultSFTD_EUTRA measResultSFTD_EUTRA = 6 [ json_name="measResultSFTD_EUTRA"];
-    optional MeasResultCellSFTD_NR measResultSFTD_NR = 7 [ json_name="measResultSFTD_NR"];
-    optional MeasResultCellListSFTD_NR measResultCellListSFTD_NR = 8 [ json_name="measResultCellListSFTD_NR"];
+    MeasId meas_id = 1 [ json_name="meas_id"];
+    MeasResultServMOList meas_result_serving_mo_list = 2 [ json_name="meas_result_serving_mo_list"];
+    optional MeasResultNeighCells meas_result_neigh_cells = 3 [ json_name="meas_result_neigh_cells"];
+    optional MeasResultServFreqListEUTRASCG meas_result_serv_freq_list_eutra_scg = 4 [ json_name="meas_result_serv_freq_list_eutra_scg"];
+    optional MeasResultServFreqListNRSCG meas_result_serv_freq_list_nr_scg = 5 [ json_name="meas_result_serv_freq_list_nr_scg"];
+    optional MeasResultSFTDEUTRA meas_result_sftd_eutra = 6 [ json_name="meas_result_sftd_eutra"];
+    optional MeasResultCellSFTDNR meas_result_sftd_nr = 7 [ json_name="meas_result_sftd_nr"];
+    optional MeasResultCellListSFTDNR meas_result_cell_list_sftd_nr = 8 [ json_name="meas_result_cell_list_sftd_nr"];
+};
+
+message MeasurementReportitem {
+    MeasResults meas_results = 1 [ json_name="meas_results"];
+    optional LateNonCriticalExtension late_non_critical_extension = 2 [ json_name="late_non_critical_extension"];
+    optional NonCriticalExtension non_critical_extension = 3 [ json_name="non_critical_extension"];
 };
 
 message MeasurementReport {
-     oneof criticalExtensions_item {
-        MeasurementReport_item measurementReport = 1 [ json_name="measurementReport"];
-        CriticalExtensionsFuture criticalExtensionsFuture = 2 [ json_name="criticalExtensionsFuture"];
+     oneof critical_extensions_item {
+        MeasurementReportitem measurement_report = 1 [ json_name="measurement_report"];
+        CriticalExtensionsFuture critical_extensions_future = 2 [ json_name="critical_extensions_future"];
      }
 };
 
@@ -1936,22 +1936,22 @@ message MeasurementReport {
 // {C1}
 message C1 {
     oneof c1_item {
-        MeasurementReport measurementReport = 1 [ json_name="measurementReport"];
-        RRCReconfigurationComplete rrcReconfigurationComplete = 2 [ json_name="rrcReconfigurationComplete"];
-        RRCSetupComplete rrcSetupComplete = 3 [ json_name="rrcSetupComplete"];
-        RRCReestablishmentComplete rrcReestablishmentComplete = 4 [ json_name="rrcReestablishmentComplete"];
-        RRCResumeComplete rrcResumeComplete = 5 [ json_name="rrcResumeComplete"];
-        SecurityModeComplete securityModeComplete = 6 [ json_name="securityModeComplete"];
-        SecurityModeFailure securityModeFailure = 7 [ json_name="securityModeFailure"];
-        ULInformationTransfer ulInformationTransfer = 8 [ json_name="ulInformationTransfer"];
-        LocationMeasurementIndication locationMeasurementIndication = 9 [ json_name="locationMeasurementIndication"];
-        UECapabilityInformation ueCapabilityInformation = 10 [ json_name="ueCapabilityInformation"];
-        CounterCheckResponse counterCheckResponse = 11 [ json_name="counterCheckResponse"];
-        UEAssistanceInformation ueAssistanceInformation = 12 [ json_name="ueAssistanceInformation"];
-        FailureInformation failureInformation = 13 [ json_name="failureInformation"];
-        ULInformationTransferMRDC ulInformationTransferMRDC = 14 [ json_name="ulInformationTransferMRDC"];
-        SCGFailureInformation scgFailureInformation = 15 [ json_name="scgFailureInformation"];
-        SCGFailureInformationEUTRA scgFailureInformationEUTRA = 16 [ json_name="scgFailureInformationEUTRA"];
+        MeasurementReport measurement_report = 1 [ json_name="measurement_report"];
+        RRCReconfigurationComplete rrc_reconfiguration_complete = 2 [ json_name="rrc_reconfiguration_complete"];
+        RRCSetupComplete rrc_setup_complete = 3 [ json_name="rrc_setup_complete"];
+        RRCReestablishmentComplete rrc_reestablishment_complete = 4 [ json_name="rrc_reestablishment_complete"];
+        RRCResumeComplete rrc_resume_complete = 5 [ json_name="rrc_resume_complete"];
+        SecurityModeComplete security_mode_complete = 6 [ json_name="security_mode_complete"];
+        SecurityModeFailure security_mode_failure = 7 [ json_name="security_mode_failure"];
+        ULInformationTransfer ul_information_transfer = 8 [ json_name="ul_information_transfer"];
+        LocationMeasurementIndication location_measurement_indication = 9 [ json_name="location_measurement_indication"];
+        UECapabilityInformation ue_capability_information = 10 [ json_name="ue_capability_information"];
+        CounterCheckResponse counter_check_response = 11 [ json_name="counter_check_response"];
+        UEAssistanceInformation ue_assistance_information = 12 [ json_name="ue_assistance_information"];
+        FailureInformation failure_information = 13 [ json_name="failure_information"];
+        ULInformationTransferMRDC ul_information_transfer_mrdc = 14 [ json_name="ul_information_transfer_mrdc"];
+        SCGFailureInformation scg_failure_information = 15 [ json_name="scg_failure_information"];
+        SCGFailureInformationEUTRA scg_failure_information_eutra = 16 [ json_name="scg_failure_information_eutra"];
     }
 };
 
@@ -1969,4 +1969,3 @@ message ULDCCHMessageTypeItem {
 message ULDCCHMessageItem {
     ULDCCHMessageTypeItem  message = 1 [ json_name="message_class_extension"];
 };
-
