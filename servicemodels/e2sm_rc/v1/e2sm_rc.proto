@@ -1789,27 +1789,27 @@ message LateNonCriticalExtension {
 
 message ServCellIndex {
     // @inject_tag: aper:"valueLB:0,valueUB:31,valueExt"
-    int64 value = 1 [(validate.v1.rules).int64 = {gte: 0, lte: 31}, json_name="value"];
+    int32 value = 1 [(validate.v1.rules).int32 = {gte: 0, lte: 31}, json_name="value"];
 };
 
 message PhysCellId {
     // @inject_tag: aper:"valueLB:0,valueUB:1007,valueExt"
-    int64 value = 1 [(validate.v1.rules).int64 = {gte: 0, lte: 1007}, json_name="value"];
+    int32 value = 1 [(validate.v1.rules).int32 = {gte: 0, lte: 1007}, json_name="value"];
 };
 
 message RSRPRange {
     // @inject_tag: aper:"valueLB:0,valueUB:127,valueExt"
-    int64 value = 1 [(validate.v1.rules).int64 = {gte: 0, lte: 127}, json_name="value"];
+    int32 value = 1 [(validate.v1.rules).int32 = {gte: 0, lte: 127}, json_name="value"];
 };
 
 message RSRQRange {
     // @inject_tag: aper:"valueLB:0,valueUB:127,valueExt"
-    int64 value = 1 [(validate.v1.rules).int64 = {gte: 0, lte: 127}, json_name="value"];
+    int32 value = 1 [(validate.v1.rules).int32 = {gte: 0, lte: 127}, json_name="value"];
 };
 
 message SINRRange {
     // @inject_tag: aper:"valueLB:0,valueUB:127,valueExt"
-    int64 value = 1 [(validate.v1.rules).int64 = {gte: 0, lte: 127}, json_name="value"];
+    int32 value = 1 [(validate.v1.rules).int32 = {gte: 0, lte: 127}, json_name="value"];
 };
 
 message MeasQuantityResults {
@@ -1851,7 +1851,7 @@ message MeasResultServMOList {
 
 message MeasId {
     // @inject_tag: aper:"valueLB:1,valueUB:64,valueExt"
-    int64 value = 1 [(validate.v1.rules).int64 = {gte: 1, lte: 64}, json_name="value"];
+    int32 value = 1 [(validate.v1.rules).int32 = {gte: 1, lte: 64}, json_name="value"];
 };
 
 message MeasResultListEUTRA {
