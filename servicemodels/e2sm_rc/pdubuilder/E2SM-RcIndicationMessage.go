@@ -981,3 +981,296 @@ func CreateE2SmRcIndicationMessageFormat6RanpItem(ranParameterID int64, ranParam
 
 	return msg, nil
 }
+
+func CreateServCellIndex(ServCellIndex int32) (*e2smrcv1.ServCellIndex, error) {
+
+	msg := &e2smrcv1.ServCellIndex{
+		Value: ServCellIndex,
+	}
+
+	if err := msg.Validate(); err != nil {
+		return nil, errors.NewInvalid("CreateServCellIndex() error validating E2SM-RC PDU %s", err.Error())
+	}
+
+	return msg, nil
+}
+
+func CreatePhysCellId(PhysCellId int32) (*e2smrcv1.PhysCellId, error) {
+
+	msg := &e2smrcv1.PhysCellId{
+		Value: PhysCellId,
+	}
+
+	if err := msg.Validate(); err != nil {
+		return nil, errors.NewInvalid("CreatePhysCellId() error validating E2SM-RC PDU %s", err.Error())
+	}
+
+	return msg, nil
+}
+
+func CreateRSRPRange(RSRPRange int32) (*e2smrcv1.RSRPRange, error) {
+
+	msg := &e2smrcv1.RSRPRange{
+		Value: RSRPRange,
+	}
+
+	if err := msg.Validate(); err != nil {
+		return nil, errors.NewInvalid("CreateRSRPRange() error validating E2SM-RC PDU %s", err.Error())
+	}
+
+	return msg, nil
+}
+
+func CreateRSRQRange(RSRQRange int32) (*e2smrcv1.RSRQRange, error) {
+
+	msg := &e2smrcv1.RSRQRange{
+		Value: RSRQRange,
+	}
+
+	if err := msg.Validate(); err != nil {
+		return nil, errors.NewInvalid("CreateRSRQRange() error validating E2SM-RC PDU %s", err.Error())
+	}
+
+	return msg, nil
+}
+
+func CreateSINRRange(SINRRange int32) (*e2smrcv1.SINRRange, error) {
+
+	msg := &e2smrcv1.SINRRange{
+		Value: SINRRange,
+	}
+
+	if err := msg.Validate(); err != nil {
+		return nil, errors.NewInvalid("CreateSINRRange() error validating E2SM-RC PDU %s", err.Error())
+	}
+
+	return msg, nil
+}
+
+func CreateMeasQuantityResults(Rsrp *e2smrcv1.RSRPRange, Rsrq *e2smrcv1.RSRQRange, Sinr *e2smrcv1.SINRRange) (*e2smrcv1.MeasQuantityResults, error) {
+
+	msg := &e2smrcv1.MeasQuantityResults{
+		Rsrp: Rsrp,
+		Rsrq: Rsrq,
+		Sinr: Sinr,
+	}
+
+	if err := msg.Validate(); err != nil {
+		return nil, errors.NewInvalid("CreateMeasQuantityResults() error validating E2SM-RC PDU %s", err.Error())
+	}
+
+	return msg, nil
+}
+
+func CreateCellResults(ResultsSsbCell *e2smrcv1.MeasQuantityResults, ResultsCsirsCell *e2smrcv1.MeasQuantityResults) (*e2smrcv1.CellResults, error) {
+
+	msg := &e2smrcv1.CellResults{
+		ResultsSsbCell:   ResultsSsbCell,
+		ResultsCsirsCell: ResultsCsirsCell,
+	}
+
+	if err := msg.Validate(); err != nil {
+		return nil, errors.NewInvalid("CreateCellResults() error validating E2SM-RC PDU %s", err.Error())
+	}
+
+	return msg, nil
+}
+
+func CreateMeasResult(CellResults *e2smrcv1.CellResults, RsIndexResults *e2smrcv1.RsIndexResults) (*e2smrcv1.MeasResult, error) {
+
+	msg := &e2smrcv1.MeasResult{
+		CellResults:    CellResults,
+		RsIndexResults: RsIndexResults,
+	}
+
+	if err := msg.Validate(); err != nil {
+		return nil, errors.NewInvalid("CreateMeasResult() error validating E2SM-RC PDU %s", err.Error())
+	}
+
+	return msg, nil
+}
+
+func CreateMeasResultNR(PhysCellId *e2smrcv1.PhysCellId, MeasResult *e2smrcv1.MeasResult, CgiInfo *e2smrcv1.CGIInfoNR) (*e2smrcv1.MeasResultNR, error) {
+
+	msg := &e2smrcv1.MeasResultNR{
+		PhysCellId: PhysCellId,
+		MeasResult: MeasResult,
+		CgiInfo:    CgiInfo,
+	}
+
+	if err := msg.Validate(); err != nil {
+		return nil, errors.NewInvalid("CreateMeasResultNR() error validating E2SM-RC PDU %s", err.Error())
+	}
+
+	return msg, nil
+}
+
+func CreateMeasResultServMO(ServCellId *e2smrcv1.ServCellIndex, MeasResultServingCell *e2smrcv1.MeasResultNR, MeasResultBestNeighCell *e2smrcv1.MeasResultNR) (*e2smrcv1.MeasResultServMO, error) {
+
+	msg := &e2smrcv1.MeasResultServMO{
+		ServCellId:              ServCellId,
+		MeasResultServingCell:   MeasResultServingCell,
+		MeasResultBestNeighCell: MeasResultBestNeighCell,
+	}
+
+	if err := msg.Validate(); err != nil {
+		return nil, errors.NewInvalid("CreateMeasResultServMO() error validating E2SM-RC PDU %s", err.Error())
+	}
+
+	return msg, nil
+}
+
+func CreateMeasResultServMOList(Value []*e2smrcv1.MeasResultServMO) (*e2smrcv1.MeasResultServMOList, error) {
+
+	msg := &e2smrcv1.MeasResultServMOList{
+		Value: Value,
+	}
+
+	if err := msg.Validate(); err != nil {
+		return nil, errors.NewInvalid("CreateMeasResultServMOList() error validating E2SM-RC PDU %s", err.Error())
+	}
+
+	return msg, nil
+}
+
+func CreateMeasId(Value int32) (*e2smrcv1.MeasId, error) {
+
+	msg := &e2smrcv1.MeasId{
+		Value: Value,
+	}
+
+	if err := msg.Validate(); err != nil {
+		return nil, errors.NewInvalid("CreateMeasId() error validating E2SM-RC PDU %s", err.Error())
+	}
+
+	return msg, nil
+}
+
+func CreateMeasResultListNR(Value []*e2smrcv1.MeasResultNR) (*e2smrcv1.MeasResultListNR, error) {
+
+	msg := &e2smrcv1.MeasResultListNR{
+		Value: Value,
+	}
+
+	if err := msg.Validate(); err != nil {
+		return nil, errors.NewInvalid("CreateMeasResultListNR() error validating E2SM-RC PDU %s", err.Error())
+	}
+
+	return msg, nil
+}
+
+func CreateMeasResultNeighCells_MeasResultListNr(MeasResultListNr *e2smrcv1.MeasResultListNR) (*e2smrcv1.MeasResultNeighCells, error) {
+
+	msg := &e2smrcv1.MeasResultNeighCells{
+		MeasResultNeighCellsItem: &e2smrcv1.MeasResultNeighCells_MeasResultListNr{
+			MeasResultListNr: MeasResultListNr,
+		},
+	}
+
+	if err := msg.Validate(); err != nil {
+		return nil, errors.NewInvalid("CreateMeasResultNeighCells_MeasResultListNr() error validating E2SM-RC PDU %s", err.Error())
+	}
+
+	return msg, nil
+}
+
+func CreateMeasResults(MeasId *e2smrcv1.MeasId, MeasResultServingMoList *e2smrcv1.MeasResultServMOList, MeasResultNeighCells *e2smrcv1.MeasResultNeighCells) (*e2smrcv1.MeasResults, error) {
+
+	msg := &e2smrcv1.MeasResults{
+		MeasId:                  MeasId,
+		MeasResultServingMoList: MeasResultServingMoList,
+		MeasResultNeighCells:    MeasResultNeighCells,
+	}
+
+	if err := msg.Validate(); err != nil {
+		return nil, errors.NewInvalid("CreateMeasResults() error validating E2SM-RC PDU %s", err.Error())
+	}
+
+	return msg, nil
+}
+
+func CreateMeasurementReportitem(MeasResults *e2smrcv1.MeasResults, LateNonCriticalExtension *e2smrcv1.LateNonCriticalExtension, NonCriticalExtension *e2smrcv1.NonCriticalExtension) (*e2smrcv1.MeasurementReportitem, error) {
+
+	msg := &e2smrcv1.MeasurementReportitem{
+		MeasResults:              MeasResults,
+		LateNonCriticalExtension: LateNonCriticalExtension,
+		NonCriticalExtension:     NonCriticalExtension,
+	}
+
+	if err := msg.Validate(); err != nil {
+		return nil, errors.NewInvalid("CreateMeasurementReportitem() error validating E2SM-RC PDU %s", err.Error())
+	}
+
+	return msg, nil
+}
+
+func CreateLateNonCriticalExtension(Value []byte) (*e2smrcv1.LateNonCriticalExtension, error) {
+
+	msg := &e2smrcv1.LateNonCriticalExtension{
+		Value: Value,
+	}
+
+	if err := msg.Validate(); err != nil {
+		return nil, errors.NewInvalid("CreateLateNonCriticalExtension() error validating E2SM-RC PDU %s", err.Error())
+	}
+
+	return msg, nil
+}
+
+func CreateMeasurementReport_MeasurementReport(MeasurementReportitem *e2smrcv1.MeasurementReportitem) (*e2smrcv1.MeasurementReport, error) {
+
+	msg := &e2smrcv1.MeasurementReport{
+		CriticalExtensionsItem: &e2smrcv1.MeasurementReport_MeasurementReport{
+			MeasurementReport: MeasurementReportitem,
+		},
+	}
+
+	if err := msg.Validate(); err != nil {
+		return nil, errors.NewInvalid("CreateMeasurementReport_MeasurementReport() error validating E2SM-RC PDU %s", err.Error())
+	}
+
+	return msg, nil
+}
+
+func CreateC1_MeasurementReport(MeasurementReport *e2smrcv1.MeasurementReport) (*e2smrcv1.C1, error) {
+
+	msg := &e2smrcv1.C1{
+		C1Item: &e2smrcv1.C1_MeasurementReport{
+			MeasurementReport: MeasurementReport,
+		},
+	}
+
+	if err := msg.Validate(); err != nil {
+		return nil, errors.NewInvalid("CreateC1_MeasurementReport() error validating E2SM-RC PDU %s", err.Error())
+	}
+
+	return msg, nil
+}
+
+func CreateULDCCHMessageTypeItem_C1(C1 *e2smrcv1.C1) (*e2smrcv1.ULDCCHMessageTypeItem, error) {
+
+	msg := &e2smrcv1.ULDCCHMessageTypeItem{
+		UldcchMessagetypeItem: &e2smrcv1.ULDCCHMessageTypeItem_C1{
+			C1: C1,
+		},
+	}
+
+	if err := msg.Validate(); err != nil {
+		return nil, errors.NewInvalid("CreateULDCCHMessageTypeItem_C1() error validating E2SM-RC PDU %s", err.Error())
+	}
+
+	return msg, nil
+}
+
+func CreateULDCCHMessageItem(Message *e2smrcv1.ULDCCHMessageTypeItem) (*e2smrcv1.ULDCCHMessageItem, error) {
+
+	msg := &e2smrcv1.ULDCCHMessageItem{
+		Message: Message,
+	}
+
+	if err := msg.Validate(); err != nil {
+		return nil, errors.NewInvalid("CreateULDCCHMessageItem() error validating E2SM-RC PDU %s", err.Error())
+	}
+
+	return msg, nil
+}
