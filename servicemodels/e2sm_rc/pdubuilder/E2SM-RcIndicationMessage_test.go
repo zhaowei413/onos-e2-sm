@@ -265,3 +265,88 @@ func TestE2SmRcIndicationMessageFormat6(t *testing.T) {
 	assert.NilError(t, err)
 	t.Logf("Decoded message is\n%v", result)
 }
+
+func TestE2SmRcIndicationMessageULDCCH(t *testing.T) {
+
+	measId := int32(1)
+	servCellId := int32(5)
+
+	ServingCell_physCellId := int32(5)
+	ServingCell_rsrp := int32(50)
+	ServingCell_rsrq := int32(67)
+	ServingCell_sinr := int32(75)
+
+	NeighCells_physCellId1 := int32(6)
+	NeighCells_rsrp1 := int32(50)
+	NeighCells_rsrq1 := int32(67)
+	NeighCells_sinr1 := int32(75)
+
+	NeighCells_physCellId2 := int32(7)
+	NeighCells_rsrp2 := int32(50)
+	NeighCells_rsrq2 := int32(67)
+	NeighCells_sinr2 := int32(75)
+
+	PhysCellId, err := CreatePhysCellId(ServingCell_physCellId)
+	RSRPRange, err := CreateRSRPRange(ServingCell_rsrp)
+	RSRQRange, err := CreateRSRQRange(ServingCell_rsrq)
+	SINRRange, err := CreateSINRRange(ServingCell_sinr)
+	ResultsSsbCell, err := CreateMeasQuantityResults(RSRPRange, RSRQRange, SINRRange)
+	CellResults, err := CreateCellResults(ResultsSsbCell, nil)
+	MeasResult, err := CreateMeasResult(CellResults, nil)
+	MeasResultNR, err := CreateMeasResultNR(PhysCellId, MeasResult, nil)
+	ServCellIndex, err := CreateServCellIndex(servCellId)
+	MeasResultServMO, err := CreateMeasResultServMO(ServCellIndex, MeasResultNR, nil)
+	List := make([]*e2smrcv1.MeasResultServMO, 0)
+	List = append(List, MeasResultServMO)
+	MeasResultServMOList, err := CreateMeasResultServMOList(List)
+	assert.NilError(t, err)
+
+	PhysCellId, err = CreatePhysCellId(NeighCells_physCellId1)
+	RSRPRange, err = CreateRSRPRange(NeighCells_rsrp1)
+	RSRQRange, err = CreateRSRQRange(NeighCells_rsrq1)
+	SINRRange, err = CreateSINRRange(NeighCells_sinr1)
+	ResultsSsbCell, err = CreateMeasQuantityResults(RSRPRange, RSRQRange, SINRRange)
+	CellResults, err = CreateCellResults(ResultsSsbCell, nil)
+	MeasResult, err = CreateMeasResult(CellResults, nil)
+	MeasResultNR, err = CreateMeasResultNR(PhysCellId, MeasResult, nil)
+	assert.NilError(t, err)
+
+	NRList := make([]*e2smrcv1.MeasResultNR, 0)
+	NRList = append(NRList, MeasResultNR)
+
+	PhysCellId, err = CreatePhysCellId(NeighCells_physCellId2)
+	RSRPRange, err = CreateRSRPRange(NeighCells_rsrp2)
+	RSRQRange, err = CreateRSRQRange(NeighCells_rsrq2)
+	SINRRange, err = CreateSINRRange(NeighCells_sinr2)
+	ResultsSsbCell, err = CreateMeasQuantityResults(RSRPRange, RSRQRange, SINRRange)
+	CellResults, err = CreateCellResults(ResultsSsbCell, nil)
+	MeasResult, err = CreateMeasResult(CellResults, nil)
+	MeasResultNR, err = CreateMeasResultNR(PhysCellId, MeasResult, nil)
+	assert.NilError(t, err)
+
+	NRList = append(NRList, MeasResultNR)
+
+	MeasResultListNR, err := CreateMeasResultListNR(NRList)
+	MeasResultNeighCells, err := CreateMeasResultNeighCells_MeasResultListNr(MeasResultListNR)
+	assert.NilError(t, err)
+
+	MeasId, err := CreateMeasId(measId)
+	MeasResults, err := CreateMeasResults(MeasId, MeasResultServMOList, MeasResultNeighCells)
+	assert.NilError(t, err)
+
+	MeasurementReportitem, err := CreateMeasurementReportitem(MeasResults, nil, nil)
+	MeasurementReport, err := CreateMeasurementReport_MeasurementReport(MeasurementReportitem)
+	C1, err := CreateC1_MeasurementReport(MeasurementReport)
+	ULDCCHMessageTypeItem, err := CreateULDCCHMessageTypeItem_C1(C1)
+	msg, err := CreateULDCCHMessageItem(ULDCCHMessageTypeItem)
+	assert.NilError(t, err)
+
+	aper, err := encoder.PerEncodeE2SmRcIndicationMessage(msg)
+	assert.NilError(t, err)
+	t.Logf("APER bytes are\n%v", hex.Dump(aper))
+
+	result, err := encoder.PerDecodeE2SmRcIndicationMessage(aper)
+	assert.NilError(t, err)
+	t.Logf("Decoded message is\n%v", result)
+	assert.Equal(t, msg.String(), result.String())
+}
