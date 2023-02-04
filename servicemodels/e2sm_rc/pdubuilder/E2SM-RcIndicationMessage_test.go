@@ -341,11 +341,11 @@ func TestE2SmRcIndicationMessageULDCCH(t *testing.T) {
 	msg, err := CreateULDCCHMessageItem(ULDCCHMessageTypeItem)
 	assert.NilError(t, err)
 
-	aper, err := encoder.PerEncodeE2SmRcIndicationMessage(msg)
+	aper, err := encoder.PerEncodeE2SmRcIndicationULDCCHMessage(msg)
 	assert.NilError(t, err)
 	t.Logf("APER bytes are\n%v", hex.Dump(aper))
 
-	result, err := encoder.PerDecodeE2SmRcIndicationMessage(aper)
+	result, err := encoder.PerDecodeE2SmRcIndicationULDCCMessage(aper)
 	assert.NilError(t, err)
 	t.Logf("Decoded message is\n%v", result)
 	assert.Equal(t, msg.String(), result.String())

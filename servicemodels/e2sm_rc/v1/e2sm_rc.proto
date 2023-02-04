@@ -1887,7 +1887,7 @@ message MeasResultServFreqListEUTRASCG {
     // @inject_tag: aper:"valueLB:1,valueUB:64,valueExt"
     int64 value = 1 [(validate.v1.rules).int64 = {gte: 1, lte: 64}, json_name="value"];
 };
- 
+
 message MeasResultServFreqListNRSCG {
     // @inject_tag: aper:"valueLB:1,valueUB:64,valueExt"
     int64 value = 1 [(validate.v1.rules).int64 = {gte: 1, lte: 64}, json_name="value"];
