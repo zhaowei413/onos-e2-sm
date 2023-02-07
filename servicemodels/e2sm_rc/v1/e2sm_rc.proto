@@ -1813,13 +1813,18 @@ message SINRRange {
 };
 
 message MeasQuantityResults {
+    // @inject_tag: aper:"optional"
     optional RSRPRange rsrp = 1 [ json_name="rsrp"];
+    // @inject_tag: aper:"optional"
     optional RSRQRange rsrq = 2 [ json_name="rsrq"];
+    // @inject_tag: aper:"optional"
     optional SINRRange sinr = 3 [ json_name="sinr"];
 };
 
 message CellResults {
+    // @inject_tag: aper:"optional"
     optional MeasQuantityResults results_ssb_cell = 1 [ json_name="results_ssb_cell"];
+    // @inject_tag: aper:"optional"
     optional MeasQuantityResults results_csirs_cell = 2 [ json_name="results_csirs_cell"];
 };
 
@@ -1830,17 +1835,27 @@ message RsIndexResults {
 
 message MeasResult {
     CellResults cell_results = 1 [ json_name="cell_results"];
+    // @inject_tag: aper:"optional"
     optional RsIndexResults rs_index_results = 2 [ json_name="rs_index_results"];
 };
 
+message CGIInfoNR {
+    // @inject_tag: aper:"valueLB:0,valueUB:127,valueExt"
+    int64 value = 1 [(validate.v1.rules).int64 = {gte: 0, lte: 127}, json_name="value"];
+};
+
 message MeasResultNR {
+    // @inject_tag: aper:"optional"
     optional PhysCellId phys_cell_id = 1 [ json_name="phys_cell_id"];
     MeasResult meas_result = 2 [ json_name="meas_result"];
+    // @inject_tag: aper:"optional"
+    optional CGIInfoNR cgi_info = 3 [ json_name="cgi_info"];
 };
 
 message MeasResultServMO {
     ServCellIndex serv_cell_id = 1 [ json_name="serv_cell_id"];
     MeasResultNR meas_result_serving_cell = 2 [ json_name="meas_result_serving_cell"];
+    // @inject_tag: aper:"optional"
     optional MeasResultNR meas_result_best_neigh_cell = 3 [ json_name="meas_result_best_neigh_cell"];
 };
 
@@ -1859,16 +1874,6 @@ message MeasResultListEUTRA {
     int64 value = 1 [(validate.v1.rules).int64 = {gte: 0, lte: 127}, json_name="value"];
 };
 
-message MeasResultListUTRAFDDr16 {
-    // @inject_tag: aper:"valueLB:0,valueUB:127,valueExt"
-    int64 value = 1 [(validate.v1.rules).int64 = {gte: 0, lte: 127}, json_name="value"];
-};
-
-message SlMeasResultsCandRelayr17 {
-    // @inject_tag: aper:"valueLB:0,valueUB:127,valueExt"
-    int64 value = 1 [(validate.v1.rules).int64 = {gte: 0, lte: 127}, json_name="value"];
-};
-
 message MeasResultListNR {
     // @inject_tag: aper:"valueExt,sizeLB:1,sizeUB:8"
     repeated MeasResultNR value = 1 [json_name = "value"];
@@ -1876,10 +1881,10 @@ message MeasResultListNR {
 
 message MeasResultNeighCells {
     oneof meas_result_neigh_cells_item {
+	// @inject_tag: aper:"choiceIdx:1,valueExt"
         MeasResultListNR meas_result_list_nr = 1 [ json_name="meas_result_list_nr" ];
+	// @inject_tag: aper:"choiceIdx:2,valueExt"
         MeasResultListEUTRA meas_result_list_eutra = 2 [ json_name="meas_result_list_eutra"];
-        MeasResultListUTRAFDDr16 meas_result_list_utra_fdd_r16 = 3 [ json_name="meas_result_list_utra_fdd_r16"];
-        SlMeasResultsCandRelayr17 sl_meas_results_cand_relay_r17 = 4 [ json_name="sl_meas_results_cand_relay_r17"];
     }
 };
 
@@ -1887,7 +1892,7 @@ message MeasResultServFreqListEUTRASCG {
     // @inject_tag: aper:"valueLB:1,valueUB:64,valueExt"
     int64 value = 1 [(validate.v1.rules).int64 = {gte: 1, lte: 64}, json_name="value"];
 };
-
+ 
 message MeasResultServFreqListNRSCG {
     // @inject_tag: aper:"valueLB:1,valueUB:64,valueExt"
     int64 value = 1 [(validate.v1.rules).int64 = {gte: 1, lte: 64}, json_name="value"];
@@ -1911,23 +1916,33 @@ message MeasResultCellListSFTDNR {
 message MeasResults {
     MeasId meas_id = 1 [ json_name="meas_id"];
     MeasResultServMOList meas_result_serving_mo_list = 2 [ json_name="meas_result_serving_mo_list"];
+    // @inject_tag: aper:"optional"
     optional MeasResultNeighCells meas_result_neigh_cells = 3 [ json_name="meas_result_neigh_cells"];
+    // @inject_tag: aper:"optional"
     optional MeasResultServFreqListEUTRASCG meas_result_serv_freq_list_eutra_scg = 4 [ json_name="meas_result_serv_freq_list_eutra_scg"];
+    // @inject_tag: aper:"optional"
     optional MeasResultServFreqListNRSCG meas_result_serv_freq_list_nr_scg = 5 [ json_name="meas_result_serv_freq_list_nr_scg"];
+    // @inject_tag: aper:"optional"
     optional MeasResultSFTDEUTRA meas_result_sftd_eutra = 6 [ json_name="meas_result_sftd_eutra"];
+    // @inject_tag: aper:"optional"
     optional MeasResultCellSFTDNR meas_result_sftd_nr = 7 [ json_name="meas_result_sftd_nr"];
+    // @inject_tag: aper:"optional"
     optional MeasResultCellListSFTDNR meas_result_cell_list_sftd_nr = 8 [ json_name="meas_result_cell_list_sftd_nr"];
 };
 
 message MeasurementReportitem {
     MeasResults meas_results = 1 [ json_name="meas_results"];
+    // @inject_tag: aper:"optional"
     optional LateNonCriticalExtension late_non_critical_extension = 2 [ json_name="late_non_critical_extension"];
+    // @inject_tag: aper:"optional"
     optional NonCriticalExtension non_critical_extension = 3 [ json_name="non_critical_extension"];
 };
 
 message MeasurementReport {
      oneof critical_extensions_item {
+	// @inject_tag: aper:"choiceIdx:1,valueExt"
         MeasurementReportitem measurement_report = 1 [ json_name="measurement_report"];
+	// @inject_tag: aper:"choiceIdx:2,valueExt"
         CriticalExtensionsFuture critical_extensions_future = 2 [ json_name="critical_extensions_future"];
      }
 };
@@ -1936,21 +1951,37 @@ message MeasurementReport {
 // {C1}
 message C1 {
     oneof c1_item {
+	// @inject_tag: aper:"choiceIdx:1,valueExt"
         MeasurementReport measurement_report = 1 [ json_name="measurement_report"];
+	// @inject_tag: aper:"choiceIdx:2,valueExt"
         RRCReconfigurationComplete rrc_reconfiguration_complete = 2 [ json_name="rrc_reconfiguration_complete"];
+	// @inject_tag: aper:"choiceIdx:3,valueExt"
         RRCSetupComplete rrc_setup_complete = 3 [ json_name="rrc_setup_complete"];
+	// @inject_tag: aper:"choiceIdx:4,valueExt"
         RRCReestablishmentComplete rrc_reestablishment_complete = 4 [ json_name="rrc_reestablishment_complete"];
+	// @inject_tag: aper:"choiceIdx:5,valueExt"
         RRCResumeComplete rrc_resume_complete = 5 [ json_name="rrc_resume_complete"];
+	// @inject_tag: aper:"choiceIdx:6,valueExt"
         SecurityModeComplete security_mode_complete = 6 [ json_name="security_mode_complete"];
+	// @inject_tag: aper:"choiceIdx:7,valueExt"
         SecurityModeFailure security_mode_failure = 7 [ json_name="security_mode_failure"];
+	// @inject_tag: aper:"choiceIdx:8,valueExt"
         ULInformationTransfer ul_information_transfer = 8 [ json_name="ul_information_transfer"];
+	// @inject_tag: aper:"choiceIdx:9,valueExt"
         LocationMeasurementIndication location_measurement_indication = 9 [ json_name="location_measurement_indication"];
+	// @inject_tag: aper:"choiceIdx:10,valueExt"
         UECapabilityInformation ue_capability_information = 10 [ json_name="ue_capability_information"];
+	// @inject_tag: aper:"choiceIdx:11,valueExt"
         CounterCheckResponse counter_check_response = 11 [ json_name="counter_check_response"];
+	// @inject_tag: aper:"choiceIdx:12,valueExt"
         UEAssistanceInformation ue_assistance_information = 12 [ json_name="ue_assistance_information"];
+	// @inject_tag: aper:"choiceIdx:13,valueExt"
         FailureInformation failure_information = 13 [ json_name="failure_information"];
+	// @inject_tag: aper:"choiceIdx:14,valueExt"
         ULInformationTransferMRDC ul_information_transfer_mrdc = 14 [ json_name="ul_information_transfer_mrdc"];
+	// @inject_tag: aper:"choiceIdx:15,valueExt"
         SCGFailureInformation scg_failure_information = 15 [ json_name="scg_failure_information"];
+	// @inject_tag: aper:"choiceIdx:16,valueExt"
         SCGFailureInformationEUTRA scg_failure_information_eutra = 16 [ json_name="scg_failure_information_eutra"];
     }
 };
@@ -1959,7 +1990,9 @@ message C1 {
 // {ULDCCHMessageTypeItem}
 message ULDCCHMessageTypeItem {
     oneof uldcch_messagetype_item {
+	// @inject_tag: aper:"choiceIdx:1,valueExt"
         C1 c1 = 1 [ json_name="c1"];
+	// @inject_tag: aper:"choiceIdx:2,valueExt,fromChoiceExt"
         MessageClassExtension message_class_extension = 2 [ json_name="message_class_extension"];
     }
 };
