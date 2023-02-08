@@ -1876,7 +1876,7 @@ message MeasResultListEUTRA {
 
 message MeasResultListNR {
     // @inject_tag: aper:"valueExt,sizeLB:1,sizeUB:8"
-    repeated MeasResultNR value = 1 [json_name = "value"];
+    repeated MeasResultNR value = 1 [(validate.v1.rules).repeated = {min_items: 1, max_items: 8}, json_name = "value"];
 };
 
 message MeasResultNeighCells {
@@ -1992,7 +1992,7 @@ message ULDCCHMessageTypeItem {
     oneof uldcch_messagetype_item {
 	// @inject_tag: aper:"choiceIdx:1,valueExt"
         C1 c1 = 1 [ json_name="c1"];
-	// @inject_tag: aper:"choiceIdx:2,valueExt,fromChoiceExt"
+	// @inject_tag: aper:"choiceIdx:2,valueExt"
         MessageClassExtension message_class_extension = 2 [ json_name="message_class_extension"];
     }
 };
